@@ -1,5 +1,18 @@
 TestTask::Application.routes.draw do
+  get "service/twitter"
+
+  get "service/facebook"
+
   devise_for :users
+
+#   devise_scope :user do get "/auth/twitter/callback" => "sessions#create"
+# match "/auth/twitter/callback" => "sessions#create"
+
+# match '/auth/:provider/callback' => 'sessions#auth_callback', :as => :auth_callback
+match '/auth/:provider/callback' => 'service#twitter', :as => :auth_callback
+
+
+match "/signout" => "sessions#destroy", :as => :signout
   # devise_scope :user do get "users" => 'devise/registrations#create'
 
   # match 'users' => 'devise/registrations#create'
