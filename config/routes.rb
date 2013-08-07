@@ -22,9 +22,10 @@ TestTask::Application.routes.draw do
 
 # match '/auth/:provider/callback' => 'sessions#auth_callback', :as => :auth_callback
 match '/auth/:provider/callback' => 'service#twitter', :as => :auth_callback
+devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
 
-match "/users/sign_out" => "sessions#destroy", :as => :signout
+# match "/users/sign_out" => "sessions#destroy", :as => :signout
 
   # devise_scope :user do get "users" => 'devise/registrations#create'
 
