@@ -1,6 +1,6 @@
 TestTask::Application.routes.draw do
  
-  # root :to => redirect('/users')
+
 
   get "user/dashboard"
 
@@ -9,9 +9,9 @@ TestTask::Application.routes.draw do
 
   
 
-  # get "service/twitter"
+  get "service/twitter"
 
-  # get "service/facebook"
+  get "service/facebook"
 
   
 
@@ -21,10 +21,10 @@ TestTask::Application.routes.draw do
 # match "/auth/twitter/callback" => "sessions#create"
 
 # match '/auth/:provider/callback' => 'sessions#auth_callback', :as => :auth_callback
-# match '/auth/:provider/callback' => 'service#twitter', :as => :auth_callback
+match '/auth/:provider/callback' => 'service#twitter', :as => :auth_callback
 
 
-# match "/signout" => "sessions#destroy", :as => :signout
+match "/users/sign_out" => "sessions#destroy", :as => :signout
 
   # devise_scope :user do get "users" => 'devise/registrations#create'
 
