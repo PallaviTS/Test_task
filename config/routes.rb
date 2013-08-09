@@ -1,33 +1,22 @@
 TestTask::Application.routes.draw do
- 
 
+  devise_for :users
+  devise_scope :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
   get "user/dashboard"
 
   devise_for :users
   root :to => 'user#landing'
 
-  
-
   get "service/twitter"
-
   get "service/facebook"
-
   get "service/twitter_return"
 
-  
-
-
-
-#   devise_scope :user do get "/auth/twitter/callback" => "sessions#create"
-# match "/auth/twitter/callback" => "sessions#create"
-
-# match '/auth/:provider/callback' => 'sessions#auth_callback', :as => :auth_callback
-match '/auth/twitter/callback' => 'service#twitter_return'
-match '/auth/facebook/callback' => 'service#facebook'
+  match '/auth/twitter/callback' => 'service#twitter_return'
+  match '/auth/facebook/callback' => 'service#facebook_return'
 
 # , :as => :auth_callback
-devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
+
 
 
 # match "/users/sign_out" => "sessions#destroy", :as => :signout

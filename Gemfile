@@ -16,10 +16,12 @@ end
 
 gem 'bootstrap-sass'
 gem 'twitter'
+gem 'omniauth-facebook'
 
 gem 'json'
 gem "omniauth-twitter"
 gem 'devise'
+gem 'koala'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,6 +1,15 @@
 <h1 class="hero-unit center"> <img src="https://cdn1.iconfinder.com/data/icons/New-Social-Media-Icon-Set-V11/512/facebook.png" width="100px" height="100px"> Facebook
-<ul>
-	<br>
-
-</ul>
 </h1>
+
+<div>
+	<hr>
+	<% @results.each do |result| %>
+	<%= id = result['message'] %>
+	<%= id = result['story'] %>
+
+	<%= link_to "Like", {:controller => :service, :action => :like}, {:method => :put }, :class => 'btn' %>
+	<%= link_to "Reply", {:controller => :service, :action => :reply}, {:method => :put }, :class => 'btn' %>
+
+	<br>
+	<% end %>	
+</div>
