@@ -3,13 +3,33 @@
 
 <div>
 	<hr>
+	<h1>You have <%= @friends.first['friend_count']%> friends!! :) </h1>
+	<br>
+	<h3> Your recent posts...</h3>
+	<br>
+	<div class="hero-unit">
 	<% @results.each do |result| %>
-	<%= id = result['message'] %>
-	<%= id = result['story'] %>
-
-	<%= link_to "Like", {:controller => :service, :action => :like}, {:method => :put }, :class => 'btn' %>
-	<%= link_to "Reply", {:controller => :service, :action => :reply}, {:method => :put }, :class => 'btn' %>
+	<%=  result['message'] %>
+	<%=  result['story'] %>
+	<%= @id = result['id'] %>
+	<br>
+	<%= form_tag(:controller => "service" , :action => "like") do %>
+			<%= hidden_field_tag(:post_id,@id) %>
+  			<%= submit_tag("Like") %>
+	<% end %>
+	<%= form_tag(:controller => "service" , :action => "reply") do %>
+			<%= hidden_field_tag(:post_id,@id) %>
+			<%= label_tag(:q,"Comment") %>
+			<%= text_field_tag(:reply_message) %>
+  			<%= submit_tag("Reply") %>
+	<% end %>
+	<%= form_tag(:controller => "service" , :action => "delete_post") do %>
+			<%= hidden_field_tag(:post_id,@id) %>
+  			<%= submit_tag("Delete") %>
+	<% end %>
 
 	<br>
+	<hr>
 	<% end %>	
+	</div>
 </div>

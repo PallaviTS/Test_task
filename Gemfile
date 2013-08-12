@@ -17,6 +17,7 @@ end
 gem 'bootstrap-sass'
 gem 'twitter'
 gem 'omniauth-facebook'
+gem 'rest-client'
 
 gem 'json'
 gem "omniauth-twitter"

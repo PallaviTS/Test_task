@@ -1,25 +1,35 @@
-<h1 class="hero-unit center"><img src="https://abs.twimg.com/a/1375391966/images/resources/twitter-bird-white-on-blue.png " width="100px" height="100px"> Twitter
-<ul>
-	<br>
-<li><a href="https://twitter.com/intent/tweet?screen_name=current.user" class="twitter-mention-button" data-related="current.user">Tweet to @pallavi_shastry</a>
+	<h1 class="hero-unit center"><img src="https://abs.twimg.com/a/1375391966/images/resources/twitter-bird-white-on-blue.png " width="100px" height="100px"> Twitter
+		<ul>
+			<br>	
+			<li>
+				<a href="https://twitter.com/intent/tweet?screen_name=current.user" class="twitter-mention-button" data-related="current.user">Tweet to @pallavi_shastry</a>
+					<%= link_to "Search/hashtag","https://twitter.com/search-home", :class => "btn"%>	
+			</li>
+		</ul>
+	</h1>
 
-</li>
-</ul>
-</h1>
-<div class="brand" hero-unit>
-	
-<h3>  Recent Tweets of <%= @twitter.first.user.name %></h3>
-<% @twitter.each do |tweet| %>
-<br>
-<blockquote><%= tweet.text %></blockquote>
+	<div class="brand" hero-unit>
+			<div class="hero-unit span3 offset1">
+				<h3>  Want to block a user ?Please provide the name </h3>	
+					<%= form_tag(:controller => "service" , :action => "block") do %>
+  						<%= label_tag(:q,"User Name") %>
+ 						<%= text_field_tag(:q) %>
+  						<%= submit_tag("Block") %>
+					<% end %>
+			</div>
 
-<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<%= link_to "Reply","https://twitter.com/intent/tweet?screen_name=current.user", :class => "btn"%>
-<%= link_to "Retweet", "https://twitter.com/intent/retweet?tweet_id=#{tweet.id}", :class => "btn"%>
-<%= link_to "Favorite it" , "https://twitter.com/intent/favorite?tweet_id=#{tweet.id}" , :class => "btn"%>
-<% end %>
-<br>
-<br>
-</div>
+			<div class="hero-unit span3 offset6">
+				<h3>Recent Tweets of <%= @twitter.first.user.name %></h3>		
+				<% @twitter.each do |tweet| %>
+				<br>
+				<blockquote><%= tweet.text %></blockquote>
+				<%= link_to "Reply","https://twitter.com/intent/tweet?screen_name=current.user", :class => "btn"%>
+				<%= link_to "Retweet", "https://twitter.com/intent/retweet?tweet_id=#{tweet.id}", :class => "btn"%>
+				<%= link_to "Favorite it" , "https://twitter.com/intent/favorite?tweet_id=#{tweet.id}" , :class =>"btn"%>
+				<% end %>
+				<br>
+				<br>
+			</div>
+	</div>
 
  

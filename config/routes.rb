@@ -2,7 +2,6 @@ TestTask::Application.routes.draw do
 
   devise_for :users
   devise_scope :users do get '/users/sign_out' => 'devise/sessions#destroy' end
-
   get "user/dashboard"
 
   devise_for :users
@@ -14,8 +13,11 @@ TestTask::Application.routes.draw do
 
   match '/auth/twitter/callback' => 'service#twitter_return'
   match '/auth/facebook/callback' => 'service#facebook_return'
+  post "service/twitter" => "service#block"
+  post "service/facebook" => "service#like"
+  post "service/facebook" => "service#reply"
+  post "service/facebook" => "service#delete_post"
 
-# , :as => :auth_callback
 
 
 
